@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kolker+Brush&family=Manrope:wght@200;300;400;500;600;700;800&family=Montserrat+Alternates:wght@200;300;400;500;600&family=Noto+Sans:wght@200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>format</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <select name="" id="" onchange="window.location.href=this.value;">
+          <option value="#choosenum">Вгадай число</option>
+          <option value="#rock-paper">Камінь - ножиці - папір</option>
+          <option value="#football">Футбол</option>
+          <option value="#bornyear">Перевір свій рік народження</option>
+          <option value="#slider">Команда</option>
+        </select>
+        <div class="header-menu">
+          <div class="logo">
+            <img src="header-logo.png" alt="" class="logo" />
+          </div>
+
+          <div class="content">
+            <img src="button.png" alt="" />
+            <h2 class="user">Привіт,User</h2>
+          </div>
+        </div>
+        <div class="popular-games"></div>
+      </div>
+    </header>
+    <div class="games">
+      <h1 class="games-title">Популярні інтерактивні ігри</h1>
+      <div class="line"><img src="line.png" alt="" /></div>
+
+      <h2 id="bornyear" class="game-title">Перевір в який рік ти народився</h2>
+
+      <div class="container btn">
+        <input
+          type="text"
+          class="btn-title year-born"
+          placeholder="Введіть рік народження"
+        />
+
+        <button class="btn-logo" onclick="checkLeapYear()">
+          <img src="btn.png" alt="" class="btn-image" />
+        </button>
+
+        <p id="result"></p>
+
+        <script>
+          function checkLeapYear() {
+            // Get the input element
+            const yearBornElement = document.querySelector(".year-born");
+
+            // Get the value from the input and convert it to an integer
+            const year = parseInt(yearBornElement.value);
+
+            // Get the result element
+            const resultElement = document.getElementById("result");
+
+            // Check if the entered year is a leap year
+            if (isNaN(year)) {
+              resultElement.textContent =
+                "Будь ласка, введіть коректний рік народження.";
+            } else {
+              const isLeap = isLeapYear(year);
+
+              if (isLeap) {
+                resultElement.textContent = `${year} - високосний рік!`;
+              } else {
+                resultElement.textContent = `${year} - не високосний рік.`;
+              }
+            }
+          }
+
+          function isLeapYear(year) {
+            if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+              return true;
+            } else {
+              return false;
+            }
+          }
+        </script>
+      </div>
+    </div>
+
+    <div class="line"><img src="line.png" alt="" /></div>
+
+    <h2 id="choosenum" class="game-title">
+      Вгадай число, яке загадав комп’ютер
+    </h2>
+
+    <div class="container btn">
+      <input
+        type="text"
+        id="userGuess"
+        class="btn-title"
+        placeholder="Введіть свій варіант"
+      />
+
+      <button class="btn-logo" onclick="guessNumber()">
+        <img src="btn.png" alt="" class="btn-image" />
+      </button>
+    </div>
+
+    <p id="res"></p>
+
+    <div class="line"><img src="line.png" alt="" /></div>
+
+    <div class="rock-paper">
+      <h2 id="rock-paper" class="game-title">Камінь - ножиці - папір</h2>
+      <div class="cards">
+        <img src="rock.png" alt="" onclick="playGame(1)" class="rock" />
+        <img src="scissors.png" alt="" onclick="playGame(2)" class="scissors" />
+        <img src="paper.png" alt="" onclick="playGame(3)" class="paper" />
+      </div>
+      <div class="score">
+        <p class="score-title">Pахунок:</p>
+        <p id="computerScore" class="computer-score">
+          Комп'ютер- <span class="scr">0</span>
+        </p>
+        <p id="userScore" class="user-score">Ви- <span>0</span></p>
+      </div>
+      <p id="resul"></p>
+    </div>
+
+    <div class="line"><img src="line.png" alt="" /></div>
+    <div class="football">
+      <h2 id="football" class="game-title">Футбол</h2>
+      <div class="field">
+        <img src="ball.png" alt="" class="ball" />
+      </div>
+    </div>
+    <div class="slider">
+      <h2 id="slider" class="team">Наша Команда</h2>
+      <div class="container">
+        <head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+        </head>
+        <body>
+          <div class="slideshow-container">
+            <div class="mySlides fade">
+              <div class="numbertext">1 / 3</div>
+              <img src="247.png" style="width: 100%" />
+              <div class="text">Caption Text</div>
+            </div>
+
+            <div class="mySlides fade">
+              <div class="numbertext">2 / 3</div>
+              <img src="css.jpg" style="width: 100%" />
+              <div class="text">Caption Two</div>
+            </div>
+
+            <div class="mySlides fade">
+              <div class="numbertext">3 / 3</div>
+              <img src="html.png" style="width: 100%" />
+              <div class="text">Caption Three</div>
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+          </div>
+          <br />
+        </body>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
